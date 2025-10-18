@@ -61,7 +61,7 @@ App categories with high install counts often maintain strong ratings (>
 ---
 
 ## 👩‍💻 Author
-**Rakshitha S**  
+**Rakshitha S**  
 Data Analytics Intern  
 
 ---
