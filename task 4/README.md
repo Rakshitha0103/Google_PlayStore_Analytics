@@ -13,7 +13,8 @@ To explore **trends in app installs across categories**, identify **periods of s
 ## 🖼️ Dashboard Preview
 Here’s the output dashboard for this task 👇  
 
-![Google Play Store Dashboard](task_4-1.png)
+![Google Play Store Dashboard](task%204-1.png)
+
 
 ---
 
