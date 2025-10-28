@@ -12,6 +12,12 @@ To create a dual-axis chart that visualizes the relationship between **installs 
 
 ---
 
+## 🖼️ Dashboard Preview
+Here’s the output dashboard for this task 👇  
+
+![Google Play Store Dashboard](task%203-1.png)
+
+
 ## ⚙️ Key Steps
 
 1. **Dataset:** Kaggle – Google Play Store Apps (`googleplaystore.csv`)
@@ -74,12 +80,6 @@ Free apps dominate in install volume, whereas paid apps yield significantly high
 This contrast illustrates the trade-off between **user reach and monetization efficiency** in mobile app markets.
 
 ---
-
-## 🖼️ Dashboard Preview
-Here’s the output dashboard for this task 👇  
-
-![Google Play Store Dashboard](task%203-1.png)
-
 
 
 ## 👩‍💻 Author
