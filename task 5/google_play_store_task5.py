@@ -75,7 +75,7 @@ df_filtered = df_filtered[
     (df_filtered['Installs'] > 50000)  # >50k installs as per task
 ]
 
-st.title("Google Play Store Bubble Chart - Task 5")
+st.title("Google Play Store Bubble Chart")
 
 # -------------------------
 # Time restriction 5-7 PM IST
