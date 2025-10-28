@@ -12,9 +12,6 @@ To explore how installs have accumulated over time across different app categori
 
 ## 🖼️ Dashboard Preview
 Here’s the output dashboard for this task 👇  
-
-![Google Play Store Dashboard](task%206-1.png)
-
 ---
 
 ## ⚙️ Data Cleaning & Preparation
