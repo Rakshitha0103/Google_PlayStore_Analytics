@@ -13,7 +13,8 @@ To analyze which app categories achieve both **high user satisfaction (ratings)*
 ## 🖼️ Dashboard Preview
 Here’s the output dashboard for this task 👇  
 
-![Google Play Store Dashboard](task%203-1.png)
+![Google Play Store Dashboard](task3-1.png)
+
 
 > The chart displays two bars per category:  
 > - 🟦 **Average Rating**  
