@@ -1,4 +1,4 @@
-# 📊 Google Play Store Analytics - Task 6
+# 📊 Google Play Store Analytics 
 
 This project is part of my **Data Analytics Internship**, focusing on **real-world data cleaning, filtering, and visualization** using the **Google Play Store dataset** from Kaggle.  
 **Task 6** involves building a **stacked area chart** to visualize the **cumulative number of installs over time** for each app category, applying multiple data-driven filters and time-based visibility logic.
