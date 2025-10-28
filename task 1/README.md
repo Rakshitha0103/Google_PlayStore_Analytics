@@ -10,6 +10,19 @@ To analyze which app categories achieve both **high user satisfaction (ratings)*
 
 ---
 
+## 🖼️ Dashboard Preview
+Here’s the output dashboard for this task 👇  
+
+![Google Play Store Dashboard](task%203-1.png)
+
+> The chart displays two bars per category:  
+> - 🟦 **Average Rating**  
+> - 🟧 **Total Reviews**
+
+This visualization highlights which app categories balance **popularity** (installs + reviews) and **quality** (ratings).
+
+---
+
 ## ⚙️ Data Cleaning & Preparation
 - Replaced `"Varies with device"` in the `Size` column with NaN.  
 - Converted size units (`k`, `M`) to **numeric MB values**.  
@@ -39,17 +52,6 @@ To analyze which app categories achieve both **high user satisfaction (ratings)*
 - Compared **Average Rating (blue)** vs **Total Reviews (orange)**.  
 - Added dynamic hover labels, axis titles, and legend.  
 - Integrated optional **time-based condition**: chart visible **only between 3 PM – 5 PM IST** for dashboard simulation.
-
----
-
-## 🖼️ Dashboard Preview
-![Dashboard Preview](C:/Users/rraks/Downloads/task%203/task1.png)
-
-> The chart displays two bars per category:  
-> - 🟦 **Average Rating**  
-> - 🟧 **Total Reviews**  
-
-This visualization highlights which app categories balance **popularity** (installs + reviews) and **quality** (ratings).
 
 ---
 
