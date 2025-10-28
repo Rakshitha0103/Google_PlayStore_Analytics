@@ -15,7 +15,8 @@ To create a dual-axis chart that visualizes the relationship between **installs 
 ## 🖼️ Dashboard Preview
 Here’s the output dashboard for this task 👇  
 
-![Google Play Store Dashboard](task%203-1.png)
+![Google Play Store Dashboard](task%203/task%203-1.png)
+
 
 
 ## ⚙️ Key Steps
