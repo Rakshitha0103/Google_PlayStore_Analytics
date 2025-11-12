@@ -25,6 +25,9 @@ Understand the Google Play Store dataset and prepare it for analysis.
 **Outcome:**  
 A clean and structured dataset ready for further visualization.
 
+**Dashboard Preview:**  
+![Google Play Store Dashboard](task_1.png)
+
 ---
 
 ### Task 2: Exploratory Data Analysis (EDA)
@@ -38,6 +41,9 @@ Gain deeper insights into app performance and category distribution.
 
 **Outcome:**  
 Clear understanding of how different features influence app success.
+
+**Dashboard Preview:** 
+![Google Play Store Dashboard](task_play_2.png)
 
 ---
 
@@ -54,6 +60,8 @@ Build an interactive Streamlit dashboard for installs per category.
 **Outcome:**  
 An interactive category dashboard to explore installs by type and rating range.
 
+**Dashboard Preview:**
+![Google Play Store Dashboard](task%20play%203_page-0001.jpg)
 ---
 
 ### Task 4: Installs Over Time Dashboard
