@@ -1,8 +1,8 @@
 # Google Play Store Analytics
 
-This repository contains the complete set of projects completed during my Data Analytics Internship, where I analyzed and visualized data from the Google Play Store dataset (sourced from Kaggle).  
+This repository contains the complete set of projects completed during my **Data Analytics Internship**, where I analyzed and visualized data from the **Google Play Store dataset** (sourced from Kaggle).  
 
-Across six tasks, I performed data cleaning, transformation, and built multiple interactive dashboards using Python, Pandas, Plotly, and Streamlit to derive insights about app performance, growth patterns, and user engagement.
+Across six tasks, I performed data cleaning, transformation, and built multiple interactive dashboards using **Python**, **Pandas**, **Plotly**, and **Streamlit** to derive insights about app performance, growth patterns, and user engagement.
 
 ---
 
@@ -12,7 +12,7 @@ The project is divided into six main tasks, each focusing on a specific analytic
 
 ---
 
-### Task 1: Basic Data Exploration
+### Task 1: Basic Data Exploration  
 **Objective:**  
 Understand the Google Play Store dataset and prepare it for analysis.
 
@@ -30,7 +30,7 @@ A clean and structured dataset ready for further visualization.
 
 ---
 
-### Task 2: Exploratory Data Analysis (EDA)
+### Task 2: Exploratory Data Analysis (EDA)  
 **Objective:**  
 Gain deeper insights into app performance and category distribution.
 
@@ -42,12 +42,12 @@ Gain deeper insights into app performance and category distribution.
 **Outcome:**  
 Clear understanding of how different features influence app success.
 
-**Dashboard Preview:** 
+**Dashboard Preview:**  
 ![Google Play Store Dashboard](task_play_2.png)
 
 ---
 
-### Task 3: Category-Wise Dashboard
+### Task 3: Category-Wise Dashboard  
 **Objective:**  
 Build an interactive Streamlit dashboard for installs per category.
 
@@ -60,11 +60,12 @@ Build an interactive Streamlit dashboard for installs per category.
 **Outcome:**  
 An interactive category dashboard to explore installs by type and rating range.
 
-**Dashboard Preview:**
-![Google Play Store Dashboard](task%20play%203_page-0001.jpg)
+**Dashboard Preview:**  
+![Google Play Store Dashboard](task_play_3_page-0001.jpg)
+
 ---
 
-### Task 4: Installs Over Time Dashboard
+### Task 4: Installs Over Time Dashboard  
 **Objective:**  
 Track total installs over time by category and identify significant growth periods.
 
@@ -82,7 +83,7 @@ Interactive dashboard showing install growth trends with data download options.
 
 ---
 
-### Task 5: Bubble Chart Analysis
+### Task 5: Bubble Chart Analysis  
 **Objective:**  
 Analyze the relationship between app size, average rating, and total installs.
 
@@ -101,7 +102,7 @@ Dynamic bubble chart identifying how app size and ratings influence popularity.
 
 ---
 
-### Task 6: Cumulative Installs (Stacked Area Chart)
+### Task 6: Cumulative Installs (Stacked Area Chart)  
 **Objective:**  
 Visualize cumulative installs over time and highlight growth trends.
 
@@ -122,12 +123,12 @@ Interactive time-series visualization showing cumulative installs and category p
 ---
 
 ## Tools and Libraries
-- Python 3  
-- Pandas  
-- NumPy  
-- Plotly / Plotly Express  
-- Streamlit  
-- Datetime, Pytz  
+- **Python 3**  
+- **Pandas**  
+- **NumPy**  
+- **Plotly / Plotly Express**  
+- **Streamlit**  
+- **Datetime, Pytz**
 
 ---
 
@@ -142,11 +143,11 @@ Interactive time-series visualization showing cumulative installs and category p
 
 ## Author
 **Rakshitha S**  
-Data Analytics Intern  
+*Data Analytics Intern*  
 
-Email: **srakshitha212@gmail.com**  
-LinkedIn: [linkedin.com/in/rakshitha-s-a7b694319](https://www.linkedin.com/in/rakshitha-s-a7b694319/)  
-GitHub: [Rakshitha0103](https://github.com/Rakshitha0103)
+📧 **Email:** srakshitha212@gmail.com  
+🔗 **LinkedIn:** [linkedin.com/in/rakshitha-s-a7b694319](https://www.linkedin.com/in/rakshitha-s-a7b694319/)  
+🐙 **GitHub:** [Rakshitha0103](https://github.com/Rakshitha0103)
 
 ---
 
