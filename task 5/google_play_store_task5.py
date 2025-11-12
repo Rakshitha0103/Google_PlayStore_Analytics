@@ -3,9 +3,7 @@ import plotly.express as px
 import streamlit as st
 from datetime import datetime, timezone, timedelta
 
-# -------------------------
-# Helper: convert size to MB
-# -------------------------
+
 def size_to_mb(x):
     try:
         if pd.isna(x) or x == 'Varies with device':
@@ -17,25 +15,17 @@ def size_to_mb(x):
     except:
         return None
 
-# -------------------------
-# Load CSV
-# -------------------------
+
 file_path = r"C:\Users\rraks\Downloads\archive\googleplaystore.csv"
 df = pd.read_csv(file_path)
 
-# -------------------------
-# Drop rows with critical missing data
-# -------------------------
+
 df = df.dropna(subset=['App','Category','Rating','Installs','Size'])
 
-# -------------------------
-# Filter app name
-# -------------------------
+
 df = df[~df['App'].str.contains('S', case=False, na=False)]
 
-# -------------------------
-# Translate categories
-# -------------------------
+
 translation_map = {
     'Beauty': 'सौंदर्य', 
     'Business': 'வியாபாரம்', 
@@ -43,20 +33,16 @@ translation_map = {
 }
 df['Category_Translated'] = df['Category'].replace(translation_map)
 
-# -------------------------
-# Convert numeric columns
-# -------------------------
+
 df['Rating'] = pd.to_numeric(df['Rating'], errors='coerce')
 df['Reviews'] = pd.to_numeric(df['Reviews'], errors='coerce')
 df['Installs'] = df['Installs'].str.replace('[+,]', '', regex=True).astype(float)
 df['Size_MB'] = df['Size'].apply(size_to_mb)
 
-# Drop rows with missing numeric values
+
 df = df.dropna(subset=['Rating','Reviews','Installs','Size_MB'])
 
-# -------------------------
-# Sidebar filters
-# -------------------------
+
 st.set_page_config(page_title="Google Play Store Bubble Chart", layout="wide")
 st.sidebar.title("Filters")
 test_mode = st.sidebar.checkbox("Test Mode (show chart anytime)", value=True)
@@ -66,20 +52,16 @@ selected_categories = st.sidebar.multiselect("Select Categories", all_categories
 
 df_filtered = df[df['Category_Translated'].isin(selected_categories)]
 
-# -------------------------
-# Relaxed filters to ensure chart shows data
-# -------------------------
+
 df_filtered = df_filtered[
     (df_filtered['Rating'] > 3.0) &    
     (df_filtered['Reviews'] > 50) &   
-    (df_filtered['Installs'] > 50000)  # >50k installs as per task
+    (df_filtered['Installs'] > 50000)  
 ]
 
 st.title("Google Play Store Bubble Chart")
 
-# -------------------------
-# Time restriction 5-7 PM IST
-# -------------------------
+
 now_utc = datetime.now(timezone.utc)
 now_ist = now_utc + timedelta(hours=5, minutes=30)
 current_hour_ist = now_ist.hour
@@ -88,7 +70,7 @@ if test_mode or (17 <= current_hour_ist <= 19):
     if df_filtered.empty:
         st.warning("No apps match the selected filters. Adjust sidebar options.")
     else:
-        # Pink highlight for Game category
+        
         color_map = {cat: ('pink' if cat=='Game' else None) for cat in df_filtered['Category_Translated'].unique()}
 
         fig = px.scatter(

@@ -6,7 +6,7 @@ from plotly.subplots import make_subplots
 import os
 import re
 
-st.set_page_config(page_title="📊 Google Play Store Analytics", layout="wide")
+st.set_page_config(page_title=" Google Play Store Analytics", layout="wide")
 
 # ---------- Helper parsing ----------
 def parse_number(x):
@@ -130,7 +130,7 @@ def build_chart(summary_df):
 
 # ---------- Main ----------
 def main():
-    st.title("📊 Google Play Store Data Analytics")
+    st.title(" Google Play Store Data Analytics")
 
     path = r"C:\Users\rraks\OneDrive\Desktop\Google_PlayStore_Analytics\task 3\googleplaystore.csv"
     df = load_data(path)
@@ -138,22 +138,22 @@ def main():
     if df.empty:
         st.stop()
 
-    st.success(f"✅ Loaded {len(df)} rows")
+    st.success(f" Loaded {len(df)} rows")
 
     filtered = apply_filters(df)
-    st.info(f"✅ Rows after filtering: {len(filtered)}")
+    st.info(f"Rows after filtering: {len(filtered)}")
 
     if filtered.empty:
-        st.warning("⚠️ No data left after filtering — showing partial dataset instead.")
+        st.warning(" No data left after filtering — showing partial dataset instead.")
         filtered = df.copy()
 
     # Determine top 3 categories by installs
     if 'Category' not in filtered.columns:
-        st.error("❌ No 'Category' column found in dataset.")
+        st.error(" No 'Category' column found in dataset.")
         st.stop()
 
     top3 = filtered.groupby('Category')['Installs_parsed'].sum().nlargest(3).index.tolist()
-    st.write("🏆 Top 3 Categories:", ', '.join(top3))
+    st.write("Top 3 Categories:", ', '.join(top3))
 
     df_top3 = filtered[filtered['Category'].isin(top3)]
 

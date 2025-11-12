@@ -3,15 +3,11 @@ import plotly.express as px
 import streamlit as st
 from datetime import datetime, timezone, timedelta
 
-# ------------------------
-# Step 1: Load CSV
-# ------------------------
+
 file_path = r"C:\Users\rraks\Downloads\archive\googleplaystore.csv"  # Update if needed
 df = pd.read_csv(file_path)
 
-# ------------------------
-# Step 2: Filter data
-# ------------------------
+
 df = df[~df['App'].str.startswith(('x','y','z'))]
 df = df[~df['App'].str.contains('S', case=False, na=False)]
 df = df[df['Category'].str.startswith(('E','C','B'))]
@@ -19,9 +15,7 @@ df = df[df['Category'].str.startswith(('E','C','B'))]
 df['Reviews'] = pd.to_numeric(df['Reviews'], errors='coerce')
 df = df[df['Reviews'] > 500]
 
-# ------------------------
-# Step 3: Translate categories
-# ------------------------
+
 translation_map = {
     'Beauty': 'सौंदर्य',        # Hindi
     'Business': 'வியாபாரம்',   # Tamil
@@ -29,49 +23,41 @@ translation_map = {
 }
 df['Category_Translated'] = df['Category'].replace(translation_map)
 
-# ------------------------
-# Step 4: Clean Installs and Last Updated
-# ------------------------
+
 df['Installs'] = df['Installs'].str.replace('[+,]', '', regex=True).astype(float)
 df['Last Updated'] = pd.to_datetime(df['Last Updated'], errors='coerce')
 df = df.dropna(subset=['Last Updated'])
 
-# ------------------------
-# Step 5: Sidebar filters
-# ------------------------
+
 st.set_page_config(page_title="Google Play Store Analytics", layout="wide")
 st.sidebar.title("Filters")
 
-# Category multiselect
+
 categories = df['Category_Translated'].unique()
 selected_categories = st.sidebar.multiselect("Select Categories", categories, default=list(categories))
 
-# Date range filter
+
 min_date = df['Last Updated'].min()
 max_date = df['Last Updated'].max()
 start_date, end_date = st.sidebar.date_input("Select Date Range", [min_date, max_date])
 
-# Filter dataset based on user selection
+
 filtered_df = df[
     (df['Category_Translated'].isin(selected_categories)) &
     (df['Last Updated'] >= pd.to_datetime(start_date)) &
     (df['Last Updated'] <= pd.to_datetime(end_date))
 ]
 
-# ------------------------
-# Step 6: Aggregate installs
-# ------------------------
+
 filtered_df['YearMonth'] = filtered_df['Last Updated'].dt.to_period('M')
 agg_df = filtered_df.groupby(['YearMonth','Category_Translated'])['Installs'].sum().reset_index()
 agg_df['YearMonth'] = agg_df['YearMonth'].dt.to_timestamp()
 agg_df['Pct_Change'] = agg_df.groupby('Category_Translated')['Installs'].pct_change()
 
-# ------------------------
-# Step 7: Display Graph
-# ------------------------
+
 st.title("Real-time Google Play Store Data Analytics")
 
-# Time restriction (6 PM to 9 PM IST)
+
 now_utc = datetime.now(timezone.utc)
 now_ist = now_utc + timedelta(hours=5, minutes=30)
 current_hour_ist = now_ist.hour
@@ -89,7 +75,7 @@ if 18 <= current_hour_ist <= 21:
         labels={'YearMonth':'Month','Installs':'Total Installs'}
     )
     
-    # Highlight >20% MoM growth
+    
     if highlight_growth:
         for cat in agg_df['Category_Translated'].unique():
             data = agg_df[agg_df['Category_Translated']==cat]
@@ -113,18 +99,14 @@ if 18 <= current_hour_ist <= 21:
     
     st.plotly_chart(fig, use_container_width=True)
 
-    # ------------------------
-    # Step 8: Show Top 5 Apps per category
-    # ------------------------
+    
     st.subheader("Top 5 Apps per Category")
     top_apps = filtered_df.groupby(['Category_Translated','App'])['Installs'].sum().reset_index()
     top_apps = top_apps.sort_values(['Category_Translated','Installs'], ascending=[True,False])
     top5_apps = top_apps.groupby('Category_Translated').head(5)
     st.dataframe(top5_apps)
     
-    # ------------------------
-    # Step 9: Download Filtered Data
-    # ------------------------
+   
     csv = filtered_df.to_csv(index=False).encode('utf-8')
     st.download_button(
         label="Download Filtered Data",

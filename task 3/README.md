@@ -1,99 +1,90 @@
+# Google Play Store Analytics – Task 3
 
-# 📈 Google Play Store Analytics – Task 3
+This task is a part of the Google Play Store Analytics project.  
+The goal was to build a real-time Streamlit dashboard that compares the average installs and average revenue of Free and Paid apps within the Top 3 categories.
 
-This task enhances the Google Play Store Analytics project by building a **real-time Streamlit dashboard** that compares **average installs** and **average revenue** for **Free vs Paid** apps across the **Top 3 categories**.
-It demonstrates advanced filtering, time-based visualization control, and live analytical insight generation.
+The dashboard includes advanced filters, a time-based condition, and a dual-axis chart that gives a clear comparison between installs and revenue.
 
----
+------------------------------------------------------------
 
-## 🧩 Objective
+## What I Built
 
-To create a dual-axis chart that visualizes the relationship between **installs and revenue** for free and paid apps, while applying multiple data-driven filters and a real-time display condition.
+I created a dual-axis chart that shows how Free and Paid apps perform in terms of installs and revenue.  
+The dashboard automatically identifies the Top 3 app categories and displays both metrics side by side.  
+It is visible only between 1 PM and 2 PM IST. Outside this time window, a message appears instead of the chart.
 
----
+### Dashboard Preview
 
-## 🖼️ Dashboard Preview
-Here’s the output dashboard for this task 👇  
+Here’s the dashboard output for this task:
 
-![Google Play Store Dashboard](task%203/task%203-1.png)
+![Google Play Store Dashboard](task%20play%203_page-0001.jpg)
 
+------------------------------------------------------------
 
+## Steps I Followed
 
-## ⚙️ Key Steps
+1. Dataset: Google Play Store Apps dataset (googleplaystore.csv) from Kaggle.
 
-1. **Dataset:** Kaggle – Google Play Store Apps (`googleplaystore.csv`)
-2. **Preprocessing:**
+2. Data Preprocessing:
+   - Cleaned and formatted columns like Installs, Revenue, Android Version, Size, Content Rating, and App Name.
+   - Converted text formats like "1,000,000+" to 1000000 and "19M" to 19.
+   - Removed rows with missing or non-numeric values.
 
-   * Parsed and cleaned columns (`Installs`, `Revenue`, `Android Version`, `Size`, `Content Rating`, `App Name`).
-   * Standardized formats for installs (`1,000,000+` → `1000000`) and size (`19M` → `19`).
-   * Handled missing or non-numeric values gracefully.
-3. **Filtering Criteria:**
+3. Applied Filters:
+   - Installs greater than or equal to 10,000
+   - Revenue greater than or equal to 10,000
+   - Android version greater than 4.0
+   - App size greater than 15 MB
+   - Content rating equal to "Everyone"
+   - App name not longer than 30 characters (including spaces and symbols)
 
-   * **Installs ≥ 10,000**
-   * **Revenue ≥ 10,000**
-   * **Android Version > 4.0**
-   * **App Size > 15 MB**
-   * **Content Rating = ‘Everyone’**
-   * **App Name ≤ 30 characters** (including spaces and symbols)
-4. **Analysis:**
+4. Analysis:
+   - Found the Top 3 categories based on total installs after filtering.
+   - Calculated the average installs and average revenue for both Free and Paid apps within those categories.
 
-   * Determined the **Top 3 categories** by total installs after filtering.
-   * Computed average installs and average revenue for Free vs Paid apps within those categories.
-5. **Visualization:**
+5. Visualization:
+   - Created a dual-axis chart using Plotly.
+     - Bars show Average Installs.
+     - Line shows Average Revenue.
+   - X-axis represents Category and App Type (Free or Paid).
+   - Left Y-axis shows Average Installs, and the Right Y-axis shows Average Revenue.
 
-   * Used Plotly to build a **dual-axis chart** (Avg Installs = bars, Avg Revenue = line).
-   * X-axis → Category and App Type (Free/Paid).
-   * Left Y-axis → Average Installs.
-   * Right Y-axis → Average Revenue.
-6. **Dynamic Condition:**
+6. Time Restriction:
+   - The dashboard displays the chart only between 1 PM and 2 PM IST.
+   - At other times, it shows the message "Dashboard available only between 1 PM and 2 PM IST."
 
-   * Dashboard displays the chart **only between 1 PM and 2 PM IST**.
-   * Outside this time window, a placeholder message appears instead of the chart.
-7. **Real-Time Simulation:**
+7. Real-Time Effect:
+   - Added an auto-refresh feature to simulate live updates during the active time period.
 
-   * Integrated auto-refresh capability to simulate live data updates during the active window.
+------------------------------------------------------------
 
----
+## Key Insights
 
-## 🖼️ Output
+Free apps have a much higher number of installs, while Paid apps generate higher average revenue.  
+This shows the trade-off between reaching more users and earning more revenue per user.
 
-A Streamlit-based dashboard showing:
+------------------------------------------------------------
 
-* **Dual-axis comparison** of Average Installs vs Average Revenue.
-* **Top 3 App Categories** identified automatically.
-* **Dynamic chart visibility** restricted to the 1 PM – 2 PM IST window.
-* Responsive, interactive Plotly chart with hover details and clear legends.
+## Tools and Libraries Used
 
----
+- Python 3  
+- Pandas  
+- NumPy  
+- Datetime and Pytz  
+- Plotly and Plotly Graph Objects  
+- Streamlit for the dashboard interface
 
-## 🛠️ Tools & Libraries
+------------------------------------------------------------
 
-* Python 3
-* Pandas · NumPy · Datetime · Pytz
-* Plotly · Plotly Graph Objects
-* Streamlit (for dashboard UI)
+## Author
 
----
+Rakshitha S  
+Data Analytics Intern  
 
-## 📊 Key Insight
+Email: srakshitha212@gmail.com  
+LinkedIn: https://www.linkedin.com/in/rakshitha-s-a7b694319/  
+GitHub: https://github.com/Rakshitha0103
 
-Free apps dominate in install volume, whereas paid apps yield significantly higher average revenue.
-This contrast illustrates the trade-off between **user reach and monetization efficiency** in mobile app markets.
+------------------------------------------------------------
 
----
-
-
-## 👩‍💻 Author
-
-**Rakshitha S**
-*Data Analytics Intern*
-
-📧 **Email:** [srakshitha212@gmail.com](mailto:srakshitha212@gmail.com)
-🔗 **LinkedIn:** [linkedin.com/in/rakshitha-s-a7b694319](https://www.linkedin.com/in/rakshitha-s-a7b694319/)
-🐙 **GitHub:** [Rakshitha0103](https://github.com/Rakshitha0103)
-
----
-
-*This README documents Task 3 of the Google Play Store Analytics Internship Project.*
-
-
+This README describes Task 3 of the Google Play Store Analytics project – Real-Time Dashboard Implementation.

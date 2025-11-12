@@ -4,35 +4,39 @@ import streamlit as st
 from datetime import datetime
 import pytz
 
-# 🕒 Set timezone to IST
 ist = pytz.timezone("Asia/Kolkata")
 current_time = datetime.now(ist).time()
 
-# 🚨 DEMO MODE: force display (pretend it's 6:30 PM)
-# comment out this line later if you want real time condition
-current_time = datetime.strptime("18:30", "%H:%M").time()
+file_path = r"C:\Users\rraks\OneDrive\Desktop\Google_PlayStore_Analytics\task 2\googleplaystore.csv"
 
-# 📥 Load dataset
-df = pd.read_csv(r"C:\Users\rraks\Downloads\archive\googleplaystore.csv")
+try:
+    df = pd.read_csv(file_path)
+except pd.errors.EmptyDataError:
+    st.error("The CSV file is empty or corrupted.")
+    st.stop()
+except FileNotFoundError:
+    st.error("File not found. Please check the path.")
+    st.stop()
 
-# 🧹 Clean data
+required_cols = ['Category', 'Installs']
+if not all(col in df.columns for col in required_cols):
+    st.error("The dataset is missing required columns (Category, Installs).")
+    st.stop()
+
 df = df.dropna(subset=['Category', 'Installs'])
 df['Installs'] = (
     df['Installs']
+    .astype(str)
     .str.replace('+', '', regex=False)
     .str.replace(',', '', regex=False)
 )
 df['Installs'] = pd.to_numeric(df['Installs'], errors='coerce')
 df = df.dropna(subset=['Installs'])
-
-# ❌ Exclude categories starting with A, C, G, or S
 df = df[~df['Category'].str.startswith(('A', 'C', 'G', 'S'))]
 
-# 🔝 Top 5 categories by installs
 top_categories = df.groupby('Category')['Installs'].sum().nlargest(5).index
 df_top = df[df['Category'].isin(top_categories)]
 
-# 🌍 Map categories to countries for visualization
 country_map = {
     'ENTERTAINMENT': 'USA',
     'TOOLS': 'IND',
@@ -47,36 +51,29 @@ country_map = {
 }
 df_top['Country'] = df_top['Category'].map(country_map).fillna('USA')
 
-# 🗺️ Aggregate data
 agg = df_top.groupby(['Country', 'Category'])['Installs'].sum().reset_index()
 
-# 🖍️ Create colored Choropleth map
-fig = px.choropleth(
-    agg,
-    locations='Country',
-    color='Installs',
-    hover_name='Category',
-    color_continuous_scale='Viridis',
-    projection='natural earth',
-    title='🌍 Global Installs by App Category'
-)
+start_time = datetime.strptime("18:00", "%H:%M").time()
+end_time = datetime.strptime("20:00", "%H:%M").time()
 
-fig.update_layout(
-    geo=dict(showframe=False, showcoastlines=True),
-    coloraxis_colorbar=dict(title="Total Installs", tickformat=".0f")
-)
-
-# 🖥️ Streamlit dashboard
-st.title("🌍 Google Play Store Analytics – Task 2")
+st.title("Google Play Store Analytics ")
 st.subheader("Interactive Choropleth Map of Global Installs by Category")
-st.write(f"🕒 Current IST time: {current_time.strftime('%I:%M %p')}")
+st.write(f"Current IST time: {datetime.now(ist).strftime('%I:%M %p')}")
 
-# ✅ Always show map (demo mode)
-st.plotly_chart(fig, use_container_width=True)
-st.success("✅ Demo mode active — map visible (pretending it's 6:30 PM IST).")
-
-# 🕒 To use actual timing, replace above 3 lines with:
-# if time(18, 0) <= current_time <= time(20, 0):
-#     st.plotly_chart(fig, use_container_width=True)
-# else:
-#     st.warning("⚠️ The Choropleth map is only visible between 6 PM – 8 PM IST.")
+if start_time <= current_time <= end_time:
+    fig = px.choropleth(
+        agg,
+        locations='Country',
+        color='Installs',
+        hover_name='Category',
+        color_continuous_scale='Viridis',
+        projection='natural earth',
+        title='Global Installs by App Category'
+    )
+    fig.update_layout(
+        geo=dict(showframe=False, showcoastlines=True),
+        coloraxis_colorbar=dict(title="Total Installs", tickformat=".0f")
+    )
+    st.plotly_chart(fig, use_container_width=True)
+else:
+    st.warning("The map is visible only between 6 PM and 8 PM IST.")
