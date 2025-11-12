@@ -141,6 +141,36 @@ Interactive time-series visualization showing cumulative installs and category p
 
 ---
 
+## How to Run
+
+Follow these steps to run the project locally:
+
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/Rakshitha0103/Google_PlayStore_Analytics.git
+   ```
+
+2. **Navigate into the project directory**  
+   ```bash
+   cd Google_PlayStore_Analytics
+   ```
+
+3. **Install dependencies**  
+   Make sure you have Python 3.10+ installed, then run:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Run any task using Streamlit**  
+   Example for Task 1:
+   ```bash
+   streamlit run google_play_store_task1.py
+   ```
+
+5. **Access the dashboard**  
+   Once the Streamlit app launches, open the local URL (usually `http://localhost:8501/`) in your browser to explore the dashboard.
+
+
 ## Author
 **Rakshitha S**  
 *Data Analytics Intern*  
